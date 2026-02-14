@@ -160,14 +160,13 @@
 			box-shadow: 0 8px 18px rgba(4, 10, 22, 0.18);
 		}
 
-		.btn-outline-frost:hover {
+		/* .btn-outline-frost:hover {
 			color: #ffffff;
 			background: rgba(255, 255, 255, 0.15);
 			border-color: rgba(248, 251, 255, 0.88);
 			transform: translateY(-2px);
-			box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.34), 0 12px 24px rgba(4, 10, 22, 0.24);
-		}
-
+			box-shadow: 0 8px 18px rgba(4, 10, 22, 0.18);
+		} */
 		.btn-classic {
 			color: #10192a;
 			border: 1px solid rgba(255, 255, 255, 0.82);
@@ -222,57 +221,66 @@
 		}
 
 		.navbar.glass-nav {
-			background: transparent;
-			box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
-			-webkit-backdrop-filter: blur(14px) saturate(125%);
-			backdrop-filter: blur(14px) saturate(125%);
+			position: relative;
+			padding: 0.9rem 0 0.75rem;
 			animation: navEnter 700ms var(--ease-out) both;
 		}
 
 		.navbar.glass-nav .container-fluid {
 			max-width: 1160px;
-			padding-inline: 1.1rem;
+			padding-inline: 1rem;
+			gap: 0.7rem;
 		}
 
 		.navbar-brand {
 			font-weight: 600;
-			letter-spacing: 0.05em;
-			color: #f8fbff;
+			letter-spacing: 0.035em;
+			color: #f6fbff;
+			padding-inline: 0.1rem;
 		}
 
 		.nav-link {
 			position: relative;
-			color: rgba(232, 241, 255, 0.9);
-			font-weight: 500;
-			padding-inline: 0.9rem !important;
-			transition: color 220ms ease;
+			color: rgba(230, 240, 255, 0.82);
+			font-weight: 520;
+			padding: 0.34rem 0.78rem 0.5rem !important;
+			letter-spacing: 0.01em;
+			border-radius: 0.6rem;
+			transition: color 220ms ease, opacity 220ms ease, background-color 220ms ease;
 		}
 
 		.nav-link::after {
-			content: "";
-			position: absolute;
-			left: 0.9rem;
-			right: 0.9rem;
-			bottom: 0.35rem;
-			height: 1px;
-			background: rgba(214, 233, 255, 0.9);
-			transform: scaleX(0);
-			transform-origin: center;
-			transition: transform 260ms var(--ease-out);
+			content: none;
 		}
 
 		.nav-link:hover,
 		.nav-link.active {
 			color: #ffffff;
+			opacity: 1;
+			background: rgba(255, 255, 255, 0.1);
 		}
 
 		.nav-link:hover::after,
 		.nav-link.active::after {
-			transform: scaleX(1);
+			content: none;
 		}
 
 		.navbar-toggler {
 			border: none;
+			border-radius: 0;
+			padding: 0.38rem 0.22rem;
+			box-shadow: none;
+		}
+
+		.navbar-toggler:focus {
+			box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.12);
+		}
+
+		.navbar-toggler-icon {
+			width: 1.4rem;
+			height: 1.4rem;
+			filter: none;
+			background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath d='M4 7h16M4 12h16M4 17h16' fill='none' stroke='rgba(247,251,255,0.95)' stroke-linecap='round' stroke-width='1.9'/%3e%3c/svg%3e");
 		}
 
 		@keyframes heroEnter {
@@ -313,17 +321,23 @@
 
 		@media (max-width: 991.98px) {
 			.navbar.glass-nav .navbar-collapse {
-				margin-top: 0.7rem;
-				padding-top: 0.6rem;
+				margin-top: 0.55rem;
+				padding: 0.55rem 0.55rem 0.28rem;
+				border-top: 1px solid rgba(236, 245, 255, 0.14);
+				background: linear-gradient(135deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.06));
+				border-radius: 0.9rem;
+				-webkit-backdrop-filter: blur(14px) saturate(150%);
+				backdrop-filter: blur(14px) saturate(150%);
+				transition: opacity 220ms ease, transform 220ms var(--ease-out);
 			}
 
 			.nav-link {
-				padding-inline: 0 !important;
+				padding: 0.62rem 0.52rem !important;
+				border-radius: 0.6rem;
 			}
 
 			.nav-link::after {
-				left: 0;
-				right: 70%;
+				content: none;
 			}
 		}
 
@@ -606,26 +620,26 @@
 <body>
 	<nav class="navbar glass-nav navbar-expand-lg">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="#">Einladung</a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+			<a class="navbar-brand" href="#hero">Einladung</a>
+			<button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 				<div class="navbar-nav ms-auto">
-					<a class="nav-link active" aria-current="page" href="#">Facts</a>
-					<a class="nav-link" href="#">Highlights</a>
-					<a class="nav-link" href="#">FAQs</a>
+					<a class="nav-link active" aria-current="page" href="#hero">Info</a>
+					<a class="nav-link" href="#highlights">Highlights</a>
+					<a class="nav-link" href="#faq">FAQ</a>
 				</div>
 			</div>
 		</div>
 	</nav>
-	<main class="hero d-flex align-items-center">
+	<main class="hero d-flex align-items-center" id="hero">
 		<div class="container py-5">
 			<section class="hero-card rounded-4 p-4 p-md-5 text-center">
 				<div class="hero-content">
 					<!-- <span class="hero-tag mb-4">Save the Date</span> -->
 					<div class="hero-meta">
-						<span class="hero-meta-item">7. März · 19:00 Uhr · Mühlrain 35</span>
+						<span class="hero-meta-item">6. März · 19:00 Uhr · Mühlrain 35</span>
 					</div>
 					<h1 class="fw-bold mb-3">Feiere mit uns einen besonderen Abend</h1>
 					<p class="hero-subline lead fw-semibold mb-3">
@@ -754,7 +768,7 @@
 						</ul>
 					</article>
 				</div>
-				<p class="features-hint">Nach links oder rechts wischen</p>
+				<p class="features-hint">nach links oder rechts wischen</p>
 			</div>
 		</div>
 	</section>
@@ -781,11 +795,11 @@
 						<div class="count-label">Sekunden</div>
 					</div>
 				</div>
-				<p class="countdown-finished" id="countdownFinished">Es ist soweit. Die Party beginnt jetzt.</p>
+				<p class="countdown-finished" id="countdownFinished">In weniger als 2 Stunden geht's los.</p>
 			</div>
 		</div>
 	</section>
-	<section class="faq-section">
+	<section class="faq-section" id="faq">
 		<div class="container">
 			<div class="faq-wrap">
 				<div class="text-center mb-4 mb-md-5">
@@ -844,6 +858,27 @@
 	</footer>
 	<script>
 		(() => {
+			const links = Array.from(document.querySelectorAll(".navbar-nav .nav-link"));
+			const collapse = document.getElementById("navbarNavAltMarkup");
+			if (!links.length) return;
+
+			links.forEach((link) => {
+				link.addEventListener("click", () => {
+					links.forEach((l) => l.classList.remove("active"));
+					link.classList.add("active");
+					if (window.innerWidth < 992 && collapse) {
+						if (window.bootstrap?.Collapse) {
+							const bsCollapse = window.bootstrap.Collapse.getOrCreateInstance(collapse, { toggle: false });
+							bsCollapse.hide();
+						} else {
+							collapse.classList.remove("show");
+						}
+					}
+				});
+			});
+		})();
+
+		(() => {
 			const root = document.getElementById("countdown");
 			if (!root) return;
 
@@ -871,15 +906,20 @@
 			};
 
 			const update = () => {
+				const hintThreshold = 2 * 60 * 60 * 1000; // 2 hours
 				const now = Date.now();
 				const distance = endTime - now;
+
+				if (finished) {
+					finished.style.display = distance <= hintThreshold ? "block" : "none";
+				}
+
 				if (distance <= 0) {
 					setValue("days", 0);
 					setValue("hours", 0);
 					setValue("minutes", 0);
 					setValue("seconds", 0);
 					root.style.opacity = "0.55";
-					if (finished) finished.style.display = "block";
 					return true;
 				}
 
@@ -911,11 +951,11 @@
 
 		// ICS (Add to calendar)
 		const PARTY = {
-			title: "Party Einladung",
-			address: "Muehlrain 35",
-			dateISO: "2026-03-07",
+			title: "Geburtstagsparty Dominik",
+			address: "Mühlrain 35, 70180 Stuttgart",
+			dateISO: "2026-03-06",
 			start: "19:00",
-			end: "23:30"
+			end: "23:59"
 		};
 
 		function pad(n) { return String(n).padStart(2, "0"); }
@@ -942,7 +982,7 @@
 			const ics =
 				`BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//HomeParty//Invite//DE
+PRODID:-//GeburtstagspartyDominik//Invite//DE
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
@@ -952,7 +992,6 @@ DTSTART:${dtStart}
 DTEND:${dtEnd}
 SUMMARY:${PARTY.title}
 LOCATION:${PARTY.address}
-DESCRIPTION:Home Party zum 34. Geburtstag.\\n\\nAdresse: ${PARTY.address}\\nStart: ${PARTY.start}\\n\\nBitte kurz zusagen (WhatsApp).
 END:VEVENT
 END:VCALENDAR`;
 
@@ -967,7 +1006,7 @@ END:VCALENDAR`;
 			const blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
 			const a = document.createElement("a");
 			a.href = URL.createObjectURL(blob);
-			a.download = "home-party-34.ics";
+			a.download = "home-party-dominik.ics";
 			document.body.appendChild(a);
 			a.click();
 			setTimeout(() => {
