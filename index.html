@@ -157,7 +157,7 @@
 			background: rgba(255, 255, 255, 0.08);
 			-webkit-backdrop-filter: blur(12px) saturate(150%);
 			backdrop-filter: blur(12px) saturate(150%);
-			box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.26), 0 8px 18px rgba(4, 10, 22, 0.18);
+			box-shadow: 0 8px 18px rgba(4, 10, 22, 0.18);
 		}
 
 		.btn-outline-frost:hover {
@@ -374,7 +374,7 @@
 		}
 
 		.features-section {
-			padding-block: 0.5rem 2.3rem;
+			padding-block: 0rem 5rem;
 		}
 
 		.features-wrap {
@@ -484,7 +484,7 @@
 		}
 
 		.countdown-section {
-			padding-block: 0 2.5rem;
+			padding-block: 0 5rem;
 		}
 
 		.countdown-wrap {
@@ -523,7 +523,6 @@
 			margin-top: 0.35rem;
 			font-size: 0.76rem;
 			letter-spacing: 0.12em;
-			text-transform: uppercase;
 			color: var(--text-soft);
 		}
 
@@ -574,6 +573,32 @@
 			.countdown-grid {
 				grid-template-columns: repeat(2, minmax(0, 1fr));
 			}
+		}
+
+		.site-footer {
+			padding: 1.4rem 0 2rem;
+		}
+
+		.site-footer .container {
+			position: relative;
+			text-align: center;
+		}
+
+		.site-footer .container::before {
+			content: "";
+			display: block;
+			height: 1px;
+			margin: 0 auto 0.95rem;
+			max-width: 920px;
+			background: linear-gradient(90deg, transparent, rgba(244, 249, 255, 0.34), transparent);
+		}
+
+		.site-footer p {
+			margin: 0;
+			font-size: 0.84rem;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+			color: rgba(229, 238, 252, 0.72);
 		}
 	</style>
 </head>
@@ -729,7 +754,7 @@
 						</ul>
 					</article>
 				</div>
-				<p class="features-hint">Stories nach links oder rechts wischen</p>
+				<p class="features-hint">Nach links oder rechts wischen</p>
 			</div>
 		</div>
 	</section>
@@ -810,13 +835,13 @@
 					</div>
 				</div>
 			</div>
-			<br>
-			<br>
-			<center>
-				<p style="color:grey"><small>Alle Rechte vorbehalten. Wir freuen uns sehr darauf, euch zu sehen.</small></p>
-			</center>
 		</div>
 	</section>
+	<footer class="site-footer">
+		<div class="container">
+			<p>© 2026 Dominik Bilgery. Alle Rechte vorbehalten.</p>
+		</div>
+	</footer>
 	<script>
 		(() => {
 			const root = document.getElementById("countdown");
@@ -885,6 +910,14 @@
 		document.getElementById("rsvpBtn").addEventListener("click", rsvp);
 
 		// ICS (Add to calendar)
+		const PARTY = {
+			title: "Party Einladung",
+			address: "Muehlrain 35",
+			dateISO: "2026-03-07",
+			start: "19:00",
+			end: "23:30"
+		};
+
 		function pad(n) { return String(n).padStart(2, "0"); }
 		function toICSDate(dateISO, time) {
 			// Local time -> "floating" time in ICS (no timezone) for simplicity
@@ -893,7 +926,13 @@
 			return `${y}${pad(m)}${pad(d)}T${pad(hh)}${pad(mm)}00`;
 		}
 
-		function downloadICS() {
+		function isIOSLike() {
+			return /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+				(navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+		}
+
+		function downloadICS(event) {
+			if (event) event.preventDefault();
 			const dtStart = toICSDate(PARTY.dateISO, PARTY.start);
 			const dtEnd = toICSDate(PARTY.dateISO, PARTY.end);
 			const uid = `${Date.now()}-${Math.random().toString(16).slice(2)}@homeparty`;
@@ -916,6 +955,14 @@ LOCATION:${PARTY.address}
 DESCRIPTION:Home Party zum 34. Geburtstag.\\n\\nAdresse: ${PARTY.address}\\nStart: ${PARTY.start}\\n\\nBitte kurz zusagen (WhatsApp).
 END:VEVENT
 END:VCALENDAR`;
+
+			// iOS Safari does not reliably support Blob + download attribute.
+			// Data-URI navigation is a more compatible fallback there.
+			if (isIOSLike()) {
+				const dataUrl = `data:text/calendar;charset=utf-8,${encodeURIComponent(ics)}`;
+				window.location.href = dataUrl;
+				return;
+			}
 
 			const blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
 			const a = document.createElement("a");
