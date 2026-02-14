@@ -63,6 +63,11 @@
 			opacity: 0.72;
 		}
 
+		.hero-content {
+			max-width: 640px;
+			margin-inline: auto;
+		}
+
 		.hero h1,
 		.hero p {
 			text-wrap: balance;
@@ -82,7 +87,10 @@
 
 		.hero h1 {
 			letter-spacing: -0.02em;
-			line-height: 1.05;
+			line-height: 1.06;
+			font-size: clamp(2rem, 7.6vw, 3.6rem);
+			max-width: 16ch;
+			margin-inline: auto;
 			animation: fadeUp 700ms var(--ease-out) 430ms both;
 		}
 
@@ -92,51 +100,125 @@
 			animation: fadeUp 700ms var(--ease-out) 520ms both;
 		}
 
+		.hero-meta {
+			display: inline-flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 0.5rem;
+			margin-bottom: 0.95rem;
+			animation: fadeUp 700ms var(--ease-out) 380ms both;
+		}
+
+		.hero-meta-item {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.35rem;
+			padding: 0.34rem 0.62rem;
+			border-radius: 999px;
+			/* background: rgba(255, 255, 255, 0.12);
+			border: 1px solid rgba(255, 255, 255, 0.22); */
+			font-size: 1rem;
+			color: rgba(243, 248, 255, 0.94);
+		}
+
+		.hero-subline {
+			max-width: 46ch;
+			margin-inline: auto;
+			line-height: 1.45;
+		}
+
+		.hero-details {
+			font-size: 0.95rem;
+			max-width: 54ch;
+			margin-inline: auto;
+			color: rgba(231, 240, 252, 0.82);
+		}
+
 		.hero-cta {
 			animation: fadeUp 700ms var(--ease-out) 620ms both;
+			gap: 0.6rem !important;
 		}
 
 		.hero .btn {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			gap: 0.45rem;
 			border-radius: 999px;
-			padding: 0.8rem 1.5rem;
+			padding: 0.84rem 1.65rem;
 			font-weight: 600;
-			letter-spacing: 0.01em;
-			transition: transform 220ms var(--ease-out), box-shadow 220ms var(--ease-out), background-color 220ms ease, border-color 220ms ease, color 220ms ease;
+			letter-spacing: 0.012em;
+			transition: transform 220ms var(--ease-out), box-shadow 220ms var(--ease-out), background-color 220ms ease, border-color 220ms ease, color 220ms ease, filter 220ms ease;
 		}
 
 		.btn-outline-frost {
-			color: #f5f9ff;
-			border: 1px solid rgba(255, 255, 255, 0.4);
+			color: rgba(246, 250, 255, 0.96);
+			border: 1px solid rgba(243, 248, 255, 0.45);
 			background: rgba(255, 255, 255, 0.08);
-			-webkit-backdrop-filter: blur(10px);
-			backdrop-filter: blur(10px);
+			-webkit-backdrop-filter: blur(12px) saturate(150%);
+			backdrop-filter: blur(12px) saturate(150%);
+			box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.26), 0 8px 18px rgba(4, 10, 22, 0.18);
 		}
 
 		.btn-outline-frost:hover {
 			color: #ffffff;
-			background: rgba(255, 255, 255, 0.16);
-			border-color: rgba(255, 255, 255, 0.72);
+			background: rgba(255, 255, 255, 0.15);
+			border-color: rgba(248, 251, 255, 0.88);
 			transform: translateY(-2px);
-			box-shadow: 0 10px 24px rgba(5, 10, 22, 0.28);
+			box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.34), 0 12px 24px rgba(4, 10, 22, 0.24);
 		}
 
 		.btn-classic {
-			color: #fff;
-			border: 1px solid rgba(197, 224, 255, 0.82);
-			background: linear-gradient(180deg, rgba(120, 173, 255, 0.96), rgba(71, 132, 239, 0.97));
-			box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 14px 30px rgba(42, 101, 206, 0.38);
+			color: #10192a;
+			border: 1px solid rgba(255, 255, 255, 0.82);
+			background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(232, 240, 252, 0.96));
+			box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.92), inset 0 -8px 14px rgba(173, 192, 220, 0.35), 0 14px 28px rgba(2, 8, 20, 0.28);
 		}
 
 		.btn-classic:hover {
-			color: #fff;
-			background: linear-gradient(180deg, rgba(135, 184, 255, 0.98), rgba(81, 140, 243, 0.98));
-			border-color: rgba(214, 233, 255, 0.96);
+			color: #0c1627;
+			background: linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(238, 245, 255, 0.98));
+			border-color: rgba(255, 255, 255, 0.98);
 			transform: translateY(-2px);
-			box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 16px 34px rgba(42, 101, 206, 0.45);
+			box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1), inset 0 -9px 16px rgba(178, 197, 226, 0.42), 0 16px 30px rgba(2, 8, 20, 0.32);
+			filter: saturate(102%);
 		}
 
 		.hero .btn:active {
 			transform: translateY(0);
+		}
+
+		.hero .btn:focus-visible {
+			outline: none;
+			box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+		}
+
+		.hero-scroll-cue {
+			display: inline-flex;
+			flex-direction: column;
+			align-items: center;
+			margin-top: 2rem;
+			color: rgba(233, 242, 255, 0.76);
+			font-size: 0.82rem;
+			letter-spacing: 0.02em;
+			text-decoration: none;
+			animation: fadeUp 700ms var(--ease-out) 760ms both;
+		}
+
+		.hero-scroll-cue svg {
+			animation: cueFloat 1.8s ease-in-out infinite;
+		}
+
+		@keyframes cueFloat {
+
+			0%,
+			100% {
+				transform: translateY(0);
+			}
+
+			50% {
+				transform: translateY(3px);
+			}
 		}
 
 		.navbar.glass-nav {
@@ -291,6 +373,116 @@
 			color: var(--text-soft);
 		}
 
+		.features-section {
+			padding-block: 0.5rem 2.3rem;
+		}
+
+		.features-wrap {
+			max-width: 920px;
+			margin-inline: auto;
+		}
+
+		.features-subline {
+			color: var(--text-soft);
+		}
+
+		.features-stories {
+			margin: 0;
+			padding: 0.1rem 0.1rem 0.7rem;
+			max-width: 920px;
+			margin-inline: auto;
+			display: grid;
+			grid-auto-flow: column;
+			grid-auto-columns: minmax(82%, 1fr);
+			gap: 0.85rem;
+			overflow-x: auto;
+			scroll-snap-type: x mandatory;
+			-webkit-overflow-scrolling: touch;
+			scrollbar-width: none;
+		}
+
+		.features-stories::-webkit-scrollbar {
+			display: none;
+		}
+
+		.story-card {
+			scroll-snap-align: center;
+			border-radius: 1.2rem;
+			padding: 0.95rem 0.95rem 1rem;
+			border: 1px solid rgba(255, 255, 255, 0.26);
+			background:
+				radial-gradient(360px 220px at 90% -10%, rgba(132, 179, 255, 0.25), transparent 55%),
+				linear-gradient(145deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.06));
+			-webkit-backdrop-filter: blur(14px) saturate(150%);
+			backdrop-filter: blur(14px) saturate(150%);
+			box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.26), 0 16px 28px rgba(5, 10, 22, 0.24);
+			animation: fadeUp 650ms var(--ease-out) both;
+		}
+
+		.story-bars {
+			display: flex;
+			gap: 0.35rem;
+			margin-bottom: 0.7rem;
+		}
+
+		.story-bars span {
+			height: 2px;
+			flex: 1;
+			border-radius: 999px;
+			background: rgba(230, 241, 255, 0.35);
+		}
+
+		.story-bars span.is-active {
+			background: rgba(245, 250, 255, 0.9);
+		}
+
+		.story-title {
+			font-size: 1.15rem;
+			font-weight: 700;
+			letter-spacing: -0.02em;
+			margin-bottom: 0.7rem;
+		}
+
+		.story-list {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			display: grid;
+			gap: 0.62rem;
+		}
+
+		.story-item {
+			display: flex;
+			gap: 0.55rem;
+			align-items: flex-start;
+		}
+
+		.story-item p {
+			font-size: 0.92rem;
+			color: var(--text-soft);
+			margin: 0;
+		}
+
+		.check-icon {
+			flex: 0 0 auto;
+			display: inline-flex;
+			color: #dceeff;
+			margin-top: 0.05rem;
+		}
+
+		.story-item strong {
+			color: #f7fbff;
+			font-weight: 700;
+		}
+
+		.features-hint {
+			color: rgba(236, 245, 255, 0.72);
+			font-size: 0.8rem;
+			text-align: center;
+			margin-top: 0.35rem;
+			letter-spacing: 0.02em;
+		}
+
 		.countdown-section {
 			padding-block: 0 2.5rem;
 		}
@@ -365,6 +557,20 @@
 		}
 
 		@media (max-width: 767.98px) {
+			.hero-card {
+				padding-top: 2rem !important;
+				padding-bottom: 1.75rem !important;
+			}
+
+			.hero-meta {
+				gap: 0.4rem;
+			}
+
+			.features-stories {
+				grid-auto-columns: 88%;
+				padding-inline: 0.05rem;
+			}
+
 			.countdown-grid {
 				grid-template-columns: repeat(2, minmax(0, 1fr));
 			}
@@ -391,23 +597,147 @@
 	<main class="hero d-flex align-items-center">
 		<div class="container py-5">
 			<section class="hero-card rounded-4 p-4 p-md-5 text-center">
-				<span class="hero-tag mb-4">Save the Date</span>
-				<h1 class="display-4 fw-bold mb-3">Feiere mit uns einen besonderen Abend</h1>
-				<p class="lead fw-semibold mb-4">
-					Samstag, 07. März <span>&#215;</span> 20:00 Uhr <span>&#215;</span> Mühlrain 35
-				</p>
-				<div class="hero-cta d-flex flex-column flex-sm-row justify-content-center gap-3">
-					<a class="btn btn-outline-frost btn-lg" href="#">In Kalender speichern</a>
-					<a class="btn btn-classic btn-lg" href="#" id="rsvpBtn">Jetzt zusagen</a>
+				<div class="hero-content">
+					<!-- <span class="hero-tag mb-4">Save the Date</span> -->
+					<div class="hero-meta">
+						<span class="hero-meta-item">7. März · 19:00 Uhr · Mühlrain 35</span>
+					</div>
+					<h1 class="fw-bold mb-3">Feiere mit uns einen besonderen Abend</h1>
+					<p class="hero-subline lead fw-semibold mb-3">
+						Drinks, Food, Games und guter Musik. Ein Abend mit Energie und noch besseren Leuten.
+					</p>
+					<div class="hero-cta d-flex flex-column flex-sm-row justify-content-center gap-3">
+						<a class="btn btn-outline-frost btn-lg" href="#" id="icsBtn">
+							<span>In Kalender speichern</span>
+						</a>
+						<a class="btn btn-classic btn-lg" href="#" id="rsvpBtn">
+							<span>Jetzt zusagen</span>
+						</a>
+					</div>
+					<a class="hero-scroll-cue" href="#highlights">
+						<span>Mehr erfahren</span>
+						<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+							<path d="M8 12a.5.5 0 0 1-.354-.146l-4-4a.5.5 0 1 1 .708-.708L8 10.793l3.646-3.647a.5.5 0 0 1 .708.708l-4 4A.5.5 0 0 1 8 12" />
+						</svg>
+					</a>
 				</div>
 			</section>
 		</div>
 	</main>
+	<section class="features-section" id="highlights">
+		<div class="container">
+			<div class="features-wrap">
+				<div class="text-center mb-4">
+					<h2 class="faq-title display-6 fw-bold mb-2">Highlights der Party</h2>
+					<p class="features-subline lead mb-0">Alles, was euch erwartet</p>
+				</div>
+				<div class="features-stories">
+					<article class="story-card" style="animation-delay:240ms;">
+						<div class="story-bars"><span class="is-active"></span><span></span><span></span><span></span></div>
+						<h3 class="story-title">Bar & Drinks</h3>
+						<ul class="story-list">
+							<li class="story-item">
+								<span class="check-icon" aria-hidden="true">
+									<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
+										<path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0" />
+										<path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z" />
+									</svg>
+								</span>
+								<p><strong>Signature Cocktails</strong> frisch gemixt an der Bar.</p>
+							</li>
+							<li class="story-item">
+								<span class="check-icon" aria-hidden="true">
+									<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
+										<path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0" />
+										<path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z" />
+									</svg>
+								</span>
+								<p><strong>Longdrinks & Softdrinks</strong> fuer jeden Geschmack.</p>
+							</li>
+						</ul>
+					</article>
+					<article class="story-card" style="animation-delay:320ms;">
+						<div class="story-bars"><span></span><span class="is-active"></span><span></span><span></span></div>
+						<h3 class="story-title">Food Moments</h3>
+						<ul class="story-list">
+							<li class="story-item">
+								<span class="check-icon" aria-hidden="true">
+									<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
+										<path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0" />
+										<path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z" />
+									</svg>
+								</span>
+								<p><strong>Fingerfood Selection</strong> den ganzen Abend verfuegbar.</p>
+							</li>
+							<li class="story-item">
+								<span class="check-icon" aria-hidden="true">
+									<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
+										<path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0" />
+										<path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z" />
+									</svg>
+								</span>
+								<p><strong>Sweet Desserts</strong> als spaeter Highlight.</p>
+							</li>
+						</ul>
+					</article>
+					<article class="story-card" style="animation-delay:400ms;">
+						<div class="story-bars"><span></span><span></span><span class="is-active"></span><span></span></div>
+						<h3 class="story-title">Games & Action</h3>
+						<ul class="story-list">
+							<li class="story-item">
+								<span class="check-icon" aria-hidden="true">
+									<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
+										<path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0" />
+										<path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z" />
+									</svg>
+								</span>
+								<p><strong>Beer Pong Battles</strong> mit Mini-Challenges.</p>
+							</li>
+							<li class="story-item">
+								<span class="check-icon" aria-hidden="true">
+									<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
+										<path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0" />
+										<path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z" />
+									</svg>
+								</span>
+								<p><strong>Photo Spot</strong> fuer starke Erinnerungen.</p>
+							</li>
+						</ul>
+					</article>
+					<article class="story-card" style="animation-delay:480ms;">
+						<div class="story-bars"><span></span><span></span><span></span><span class="is-active"></span></div>
+						<h3 class="story-title">Music Flow</h3>
+						<ul class="story-list">
+							<li class="story-item">
+								<span class="check-icon" aria-hidden="true">
+									<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
+										<path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0" />
+										<path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z" />
+									</svg>
+								</span>
+								<p><strong>DJ Set</strong> von chill bis dancefloor-ready.</p>
+							</li>
+							<li class="story-item">
+								<span class="check-icon" aria-hidden="true">
+									<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
+										<path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0" />
+										<path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z" />
+									</svg>
+								</span>
+								<p><strong>Late-Night Classics</strong> fuer den perfekten Abschluss.</p>
+							</li>
+						</ul>
+					</article>
+				</div>
+				<p class="features-hint">Stories nach links oder rechts wischen</p>
+			</div>
+		</div>
+	</section>
 	<section class="countdown-section">
 		<div class="container">
 			<div class="countdown-wrap text-center">
 				<h2 class="faq-title display-6 fw-bold mb-2">Du kannst es kaum abwarten?</h2>
-				<p class="faq-subline lead mb-3">Ganz ruhig. Bald ist es soweit. Nur noch</p>
+				<p class="faq-subline lead mb-3">Ganz ruhig. Bald ist es soweit.</p>
 				<div class="countdown-grid" id="countdown" data-target="2026-03-07T20:00:00+01:00">
 					<div class="count-unit">
 						<div class="count-value" data-unit="days">00</div>
@@ -435,9 +765,19 @@
 			<div class="faq-wrap">
 				<div class="text-center mb-4 mb-md-5">
 					<h2 class="faq-title display-6 fw-bold mb-2">Häufig gestellte Fragen</h2>
-					<p class="faq-subline lead mb-0">Antworten auf die wichtigsten Fragen zur Party</p>
+					<p class="faq-subline lead mb-0">Antworten auf die wichtigsten Fragen.</p>
 				</div>
 				<div class="accordion faq-glass d-grid gap-3" id="partyFaq">
+					<div class="accordion-item">
+						<h3 class="accordion-header">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqZero" aria-expanded="false" aria-controls="faqZero">
+								Gibt es einen Dresscode?
+							</button>
+						</h3>
+						<div id="faqZero" class="accordion-collapse collapse" data-bs-parent="#partyFaq">
+							<div class="accordion-body">Ja, Elegant Casual. Komm wie du dich wohlfuehlst aber lauf nicht rum wie ein Penner.</div>
+						</div>
+					</div>
 					<div class="accordion-item">
 						<h3 class="accordion-header">
 							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqOne" aria-expanded="false" aria-controls="faqOne">
@@ -445,7 +785,7 @@
 							</button>
 						</h3>
 						<div id="faqOne" class="accordion-collapse collapse" data-bs-parent="#partyFaq">
-							<div class="accordion-body">Bitte gib uns deine Rueckmeldung bis spaetestens 1. Juni, damit wir alles perfekt planen koennen.</div>
+							<div class="accordion-body">Bitte gib uns deine Rückmeldung bis spaetestens 1. Juni, damit wir alles perfekt planen koennen.</div>
 						</div>
 					</div>
 					<div class="accordion-item">
@@ -543,6 +883,53 @@
 			window.open(url, "_blank", "noreferrer");
 		}
 		document.getElementById("rsvpBtn").addEventListener("click", rsvp);
+
+		// ICS (Add to calendar)
+		function pad(n) { return String(n).padStart(2, "0"); }
+		function toICSDate(dateISO, time) {
+			// Local time -> "floating" time in ICS (no timezone) for simplicity
+			const [y, m, d] = dateISO.split("-").map(Number);
+			const [hh, mm] = time.split(":").map(Number);
+			return `${y}${pad(m)}${pad(d)}T${pad(hh)}${pad(mm)}00`;
+		}
+
+		function downloadICS() {
+			const dtStart = toICSDate(PARTY.dateISO, PARTY.start);
+			const dtEnd = toICSDate(PARTY.dateISO, PARTY.end);
+			const uid = `${Date.now()}-${Math.random().toString(16).slice(2)}@homeparty`;
+			const now = new Date();
+			const dtStamp = `${now.getUTCFullYear()}${pad(now.getUTCMonth() + 1)}${pad(now.getUTCDate())}T${pad(now.getUTCHours())}${pad(now.getUTCMinutes())}${pad(now.getUTCSeconds())}Z`;
+
+			const ics =
+				`BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//HomeParty//Invite//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:${uid}
+DTSTAMP:${dtStamp}
+DTSTART:${dtStart}
+DTEND:${dtEnd}
+SUMMARY:${PARTY.title}
+LOCATION:${PARTY.address}
+DESCRIPTION:Home Party zum 34. Geburtstag.\\n\\nAdresse: ${PARTY.address}\\nStart: ${PARTY.start}\\n\\nBitte kurz zusagen (WhatsApp).
+END:VEVENT
+END:VCALENDAR`;
+
+			const blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
+			const a = document.createElement("a");
+			a.href = URL.createObjectURL(blob);
+			a.download = "home-party-34.ics";
+			document.body.appendChild(a);
+			a.click();
+			setTimeout(() => {
+				URL.revokeObjectURL(a.href);
+				a.remove();
+			}, 0);
+		}
+
+		document.getElementById("icsBtn").addEventListener("click", downloadICS);
 	</script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
